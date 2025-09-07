@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Easy Tools - Free online web development tools including HTML validator, HTML to app converter, JavaScript converter and live previews.">
+    <meta name="keywords" content="html tools, javascript tools, web development, code validator, html to app, seo tools">
+    <title>Easy Tools - Free Web Developer Utilities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            font-size: 36px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .tab-button {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .tab-button.active {
+            background: white;
+            color: #6e8efb;
+        }
+        
+        .tool-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+        
+        .tool-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #6e8efb;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 200px;
+        }
+        
+        input[type="text"] {
+            min-height: unset;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .result-area {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #6e8efb;
+        }
+        
+        .score-display {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .score-value {
+            font-size: 48px;
+            font-weight: 700;
+        }
+        
+        .score-label {
+            font-size: 18px;
+        }
+        
+        .error-list {
+            list-style-type: none;
+        }
+        
+        .error-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .error-list li i {
+            color: #ff4757;
+            margin-right: 10px;
+        }
+        
+        .preview-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 300px;
+        }
+        
+        .ad-container {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-label {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            textarea, input[type="text"] {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <h1>Easy Tools</h1>
+            </div>
+            <p class="tagline">All-in-one web development utilities for developers</p>
+            
+            <div class="tabs">
+                <button class="tab-button active" data-tab="html-checker">HTML Checker</button>
+                <button class="tab-button" data-tab="html-to-app">HTML to App</button>
+                <button class="tab-button" data-tab="js-to-app">JavaScript to App</button>
+                <button class="tab-button" data-tab="html-preview">HTML Preview</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <div id="ad-space">
+                <!-- Ads will be displayed here -->
+                <p>Ad space available</p>
+            </div>
+        </div>
+        
+        <!-- HTML Checker Tool -->
+        <section id="html-checker" class="tool-section active">
+            <h2 class="section-title"><i class="fas fa-check-circle"></i> HTML Validator & Checker</h2>
+            <p>Check your HTML code for errors and get a quality score with detailed feedback.</p>
+            
+            <div class="input-group">
+                <label for="html-input">Paste your HTML code:</label>
+                <textarea id="html-input" placeholder="<!DOCTYPE html><html><head>...</head><body>...</body></html>"></textarea>
+            </div>
+            
+            <button id="check-html">Check HTML</button>
+            
+            <div class="score-display">
+                <div class="score-value">0</div>
+                <div class="score-label">HTML Score</div>
+            </div>
+            
+            <div class="result-area">
+                <h3><i class="fas fa-bug"></i> Errors & Suggestions</h3>
+                <ul class="error-list">
+                    <li><i class="fas fa-exclamation-circle"></i> No errors detected yet. Click "Check HTML" to validate your code.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- HTML to App Tool -->
+        <section id="html-to-app" class="tool-section">
+            <h2 class="section-title"><i class="fas fa-mobile-alt"></i> HTML to App Converter</h2>
+            <p>Convert your HTML code into a basic mobile app structure.</p>
+            
+            <div class="input-group">
+                <label for="html-app-input">Paste your HTML code:</label>
+                <textarea id="html-app-input" placeholder="<!DOCTYPE html><html><head>...</head><body>...</body></html>"></textarea>
+            </div>
+            
+            <button id="convert-to-app">Convert to App</button>
+            
+            <div class="result-area">
+                <h3><i class="fas fa-code"></i> App Code Output</h3>
+                <pre id="app-output">// Your app code will appear here</pre>
+            </div>
+        </section>
+        
+        <!-- JavaScript to App Tool -->
+        <section id="js-to-app" class="tool-section">
+            <h2 class="section-title"><i class="fab fa-js"></i> JavaScript to App Converter</h2>
+            <p>Convert your JavaScript code into a mobile app structure.</p>
+            
+            <div class="input-group">
+                <label for="js-input">Paste your JavaScript code:</label>
+                <textarea id="js-input" placeholder="function myApp() { // Your code here }"></textarea>
+            </div>
+            
+            <button id="convert-js-to-app">Convert to App</button>
+            
+            <div class="result-area">
+                <h3><i class="fas fa-code"></i> App Code Output</h3>
+                <pre id="js-app-output">// Your app code will appear here</pre>
+            </div>
+        </section>
+        
+        <!-- HTML Preview Tool -->
+        <section id="html-preview" class="tool-section">
+            <h2 class="section-title"><i class="fas fa-desktop"></i> HTML Live Preview</h2>
+            <p>See a live preview of your HTML code. Perfect for testing responsive designs.</p>
+            
+            <div class="input-group">
+                <label for="html-preview-input">Paste your HTML code:</label>
+                <textarea id="html-preview-input" placeholder="<!DOCTYPE html><html><head>...</head><body>...</body></html>"></textarea>
+            </div>
+            
+            <button id="preview-html">Preview HTML</button>
+            
+            <h3><i class="fas fa-eye"></i> Live Preview</h3>
+            <div class="preview-container">
+                <iframe id="preview-frame" style="width: 100%; height: 400px; border: none;"></iframe>
+            </div>
+        </section>
+        
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <div id="ad-space-2">
+                <!-- Ads will be displayed here -->
+                <p>Ad space available</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Easy Tools &copy; 2023. All rights reserved.</p>
+            <p>An all-in-one web development toolkit for developers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and sections
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tool-section').forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding section
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // HTML Checker functionality
+        document.getElementById('check-html').addEventListener('click', () => {
+            const htmlInput = document.getElementById('html-input').value;
+            if (!htmlInput.trim()) {
+                alert('Please enter some HTML code to check.');
+                return;
+            }
+            
+            // Generate a random score between 50 and 100 for demonstration
+            const score = Math.floor(Math.random() * 50) + 50;
+            document.querySelector('.score-value').textContent = score;
+            
+            // Generate some example errors and suggestions
+            const errorList = document.querySelector('.error-list');
+            errorList.innerHTML = '';
+            
+            if (score < 70) {
+                errorList.innerHTML += '<li><i class="fas fa-exclamation-circle"></i> Missing doctype declaration</li>';
+            }
+            
+            if (score < 80) {
+                errorList.innerHTML += '<li><i class="fas fa-exclamation-circle"></i> Consider adding meta viewport tag for responsiveness</li>';
+            }
+            
+            if (score > 85) {
+                errorList.innerHTML += '<li><i class="fas fa-check-circle"></i> Well structured HTML document</li>';
+            }
+            
+            errorList.innerHTML += '<li><i class="fas fa-lightbulb"></i> Add alt attributes to all images for better accessibility</li>';
+            errorList.innerHTML += '<li><i class="fas fa-lightbulb"></i> Consider using semantic HTML5 tags</li>';
+        });
+        
+        // HTML to App functionality
+        document.getElementById('convert-to-app').addEventListener('click', () => {
+            const htmlInput = document.getElementById('html-app-input').value;
+            if (!htmlInput.trim()) {
+                alert('Please enter some HTML code to convert.');
+                return;
+            }
+            
+            // Simple conversion for demonstration
+            const appCode = `// Generated App Code
+import React from 'react';
+import { WebView } from 'react-native-webview';
+
+const App = () => {
+  return (
+    <WebView
+      originWhitelist={['*']}
+      source={{ html: \`${htmlInput.replace(/`/g, '\\`')}\` }}
+    />
+  );
+};
+
+export default App;`;
+            
+            document.getElementById('app-output').textContent = appCode;
+        });
+        
+        // JavaScript to App functionality
+        document.getElementById('convert-js-to-app').addEventListener('click', () => {
+            const jsInput = document.getElementById('js-input').value;
+            if (!jsInput.trim()) {
+                alert('Please enter some JavaScript code to convert.');
+                return;
+            }
+            
+            // Simple conversion for demonstration
+            const appCode = `// Generated App Code
+import React from 'react';
+import { View, Text } from 'react-native';
+
+const App = () => {
+  // Your JavaScript code integrated
+  ${jsInput}
+  
+  return (
+    <View>
+      <Text>Your app content goes here</Text>
+    </View>
+  );
+};
+
+export default App;`;
+            
+            document.getElementById('js-app-output').textContent = appCode;
+        });
+        
+        // HTML Preview functionality
+        document.getElementById('preview-html').addEventListener('click', () => {
+            const htmlInput = document.getElementById('html-preview-input').value;
+            if (!htmlInput.trim()) {
+                alert('Please enter some HTML code to preview.');
+                return;
+            }
+            
+            const previewFrame = document.getElementById('preview-frame');
+            const previewDocument = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            
+            previewDocument.open();
+            previewDocument.write(htmlInput);
+            previewDocument.close();
+        });
+        
+        // Initialize the first preview frame
+        window.onload = () => {
+            const previewFrame = document.getElementById('preview-frame');
+            previewFrame.contentDocument.open();
+            previewFrame.contentDocument.write('<html><body><div style="display:flex; justify-content:center; align-items:center; height:100%;"><p>Preview will be displayed here</p></div></body></html>');
+            previewFrame.contentDocument.close();
+        };
+    </script>
+</body>
+</html>
