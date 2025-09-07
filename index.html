@@ -448,13 +448,61 @@
   .card p { margin: 0; font-size: .95rem; color: #555; }
 </style>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fab fa-js"></i>
-                </div>
-                <h3>JavaScript Tools</h3>
-                <p>Convert your JavaScript code into mobile app structures and validate your code.</p>
-            </div>
+          <div class="feature-card">
+  <div class="feature-icon">
+    <i class="fab fa-js" aria-hidden="true"></i>
+  </div>
+
+  <h3>JavaScript Tools</h3>
+  <p>Convert your JavaScript code into mobile app structures and validate your code.</p>
+
+  <!-- Use Tool button -->
+  <div class="feature-actions">
+    <!-- opens the link in a new tab; change target to "_self" if you want same-tab navigation -->
+    <a
+      class="use-tool-btn"
+      href="https://hasibulmahir-rgb.github.io/Toll/web-devoloper-free.html"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open JavaScript Tools"
+    >
+      <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+    </a>
+  </div>
+</div>
+
+<!-- Example CSS (add to your stylesheet) -->
+<style>
+.feature-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  max-width: 320px;
+  text-align: left;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+.feature-icon { font-size: 34px; color: #f0c000; margin-bottom: 8px; }
+.feature-card h3 { margin: 4px 0 8px; font-size: 18px; }
+.feature-card p { margin: 0 0 12px; color: #555; font-size: 14px; }
+
+.feature-actions { margin-top: 8px; }
+.use-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  background: #0069ff;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,105,255,0.12);
+}
+.use-tool-btn i { font-size: 14px; }
+.use-tool-btn:active { transform: translateY(1px); }
+</style>
+
             
             <div class="feature-card">
                 <div class="feature-icon">
